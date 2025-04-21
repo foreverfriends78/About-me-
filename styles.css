@@ -1,28 +1,55 @@
-/* Global Styles */
 body {
-  background: linear-gradient(135deg, #1a1a1a, #333);
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  color: white;
+  text-align: center;
   overflow-x: hidden;
 }
 
+/* Intro Animation */
+.intro-section {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f0f0f, #1a0000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: slideInIntro 2s ease forwards;
+}
+
+.intro-content {
+  text-align: center;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+.intro-heading {
+  font-size: 48px;
+  color: crimson;
+  text-shadow: 0 0 10px red, 0 0 20px crimson, 0 0 30px red;
+  animation: glowText 2s infinite alternate;
+  margin-bottom: 20px;
+}
+
+.intro-subtext {
+  font-size: 24px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid crimson;
+  width: 0;
+  animation: typing 5s steps(60, end) forwards, blink-caret 0.7s step-end infinite;
+}
+
 /* Profile Image */
-.profile-image {
+.pfp {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 5px solid #ff0055;
-  box-shadow: 0 0 30px #ff0055, 0 0 50px #ff0000;
-  margin-top: 20px;
-  transition: all 0.3s ease-in-out;
-}
-
-.profile-image:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 60px #ff0055, 0 0 80px #ff0000;
+  border: 3px solid crimson;
+  margin-top: 30px;
+  box-shadow: 0 0 30px crimson;
 }
 
 /* Main Container */
@@ -32,92 +59,88 @@ body {
   padding: 20px;
 }
 
-/* Header Section */
 h1 {
-  font-size: 40px;
+  font-size: 32px;
   color: #ff0055;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 10px 0;
-  text-shadow: 2px 2px 10px rgba(255, 0, 85, 0.6);
+  margin: 20px 0;
+  text-shadow: 0 0 10px crimson;
 }
 
-/* Section Styling */
 .section {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 10px;
   margin: 20px 0;
   box-shadow: 0 0 15px #ff0055;
 }
 
-/* Danger Zone Section */
-.danger-zone {
-  background: rgba(255, 0, 85, 0.3);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #ff0000;
-  margin-top: 30px;
-  animation: pulse 2s infinite;
-}
-
-.danger-zone h3 {
-  color: #ff0000;
-  font-size: 30px;
-  font-weight: bold;
-  text-shadow: 2px 2px 10px rgba(255, 0, 85, 0.7);
-}
-
-.danger-zone p {
-  font-size: 18px;
-  color: #ffaaa0;
-  text-shadow: 1px 1px 5px #ff0000;
-  margin: 5px 0;
-}
-
-/* Link Styling */
-a {
-  color: #ff0055;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-a:hover {
+pre {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
   color: #fff;
-  text-decoration: underline;
-  text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055;
 }
 
-/* Animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff0000;
+/* Button */
+.visit-btn {
+  background: crimson;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 15px crimson;
+  transition: transform 0.3s;
+}
+.visit-btn:hover {
+  transform: scale(1.05);
+  background: #ff0033;
+}
+
+/* Animations */
+@keyframes slideInIntro {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
   }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff0000;
+  to {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }
 
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .profile-image {
-    width: 150px;
-    height: 150px;
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowText {
+  from {
+    text-shadow: 0 0 10px red, 0 0 20px crimson;
   }
-  h1 {
+  to {
+    text-shadow: 0 0 20px #ff1a1a, 0 0 40px #ff4d4d, 0 0 60px #ff8080;
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: crimson; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .intro-heading {
     font-size: 28px;
   }
-  .danger-zone h3 {
-    font-size: 24px;
-  }
-  .danger-zone p {
+  .intro-subtext {
     font-size: 16px;
   }
-}
+  .pfp {
